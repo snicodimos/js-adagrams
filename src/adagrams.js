@@ -30,7 +30,6 @@ const Adagrams = {
       'Z'
     ];
 
-
     function genLetterPool(alphabets) {
       // we need to initilize an empty
       let hand = [];
@@ -44,14 +43,13 @@ const Adagrams = {
     return genLetterPool(alphabets)
   },
 
+
   usesAvailableLetters(word, hand) {
     let tempHand = Array.from(hand);
 
     let inputtedWord = word.toUpperCase().split("");
 
-    // for (const word of inputtedWord) {
-    //   if (tempHand.includes(word)
-    // }
+
     for (let i=0; i < inputtedWord.length; i+=1){
       if (tempHand.includes(inputtedWord[i])) {
         const index = tempHand.indexOf(inputtedWord[i])
@@ -108,6 +106,7 @@ const Adagrams = {
 
     return score;
   },
+
 
   highestScoreFrom(words) {
     let highestScoring = {
