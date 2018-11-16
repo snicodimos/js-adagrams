@@ -11,17 +11,17 @@ const Adagrams = {
       'G','G','G',
       'H','H',
       'I','I','I','I','I','I','I','I','I',
-      'J','J','J',
+      'J',
       'K',
       'L','L','L','L',
       'M','M',
-      'N',
-      'O',
+      'N','N','N','N','N','N',
+      'O','O','O','O','O','O','O','O',
       'P','P',
       'Q',
-      'R',
+      'R','R','R','R','R','R',
       'S','S','S','S',
-      'T',
+      'T','T','T','T','T','T',
       'U',
       'V','V',
       'W','W',
@@ -47,7 +47,7 @@ const Adagrams = {
   usesAvailableLetters(word, hand) {
     let tempHand = Array.from(hand);
 
-    let inputtedWord = word.split("");
+    let inputtedWord = word.toUpperCase().split("");
 
     // for (const word of inputtedWord) {
     //   if (tempHand.includes(word)
@@ -65,8 +65,48 @@ const Adagrams = {
 
   },
 
-  scoreWord() {
+  scoreWord(word) {
+    const scoreValues = {
+      A:1,
+      B:3,
+      C:3,
+      D:2,
+      E:1,
+      F:4,
+      G:2,
+      H:4,
+      I:1,
+      J:8,
+      K:5,
+      L:1,
+      M:3,
+      N:1,
+      O:1,
+      P:3,
+      Q:10,
+      R:1,
+      S:1,
+      T:1,
+      U:1,
+      V:4,
+      W:4,
+      X:8,
+      Y:4,
+      Z:10,
+    };
 
+    let score = 0;
+
+    let inputtedWord = word.toUpperCase().split("");
+    for (const letter of inputtedWord) {
+      score += scoreValues[letter];
+    }
+
+    if (word.length > 6 && word.length < 11){
+      score += 8;
+    }
+
+    return score;
   },
 
   highestScoreFrom() {
