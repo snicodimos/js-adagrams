@@ -109,8 +109,34 @@ const Adagrams = {
     return score;
   },
 
-  highestScoreFrom() {
+  highestScoreFrom(words) {
+    let highestScoring = {
+      word: '',
+      score: 0,
+    };
 
+    for (const word of words) {
+      const scoreForWord = this.scoreWord(word);
+
+      if (scoreForWord > highestScoring.score) {
+        highestScoring.score = scoreForWord;
+        highestScoring.word = word;
+      }
+      else if (scoreForWord === highestScoring.score) {
+        // tie if new word is 10 it wins
+        if (word.length == 10 && highestScoring.word.length != 10) {
+          highestScoring.score = scoreForWord;
+          highestScoring.word = word;
+        }
+        // if both words are not 10 and if new word is less letters wins
+        else if (word.length < highestScoring.word.length && highestScoring.word.length != 10) {
+          highestScoring.score = scoreForWord;
+          highestScoring.word = word;
+        }
+      }
+    }
+
+    return highestScoring;
   }
 };
 
